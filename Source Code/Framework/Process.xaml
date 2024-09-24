@@ -1,0 +1,175 @@
+<Activity mc:Ignorable="sap sap2010" x:Class="Process" xmlns="http://schemas.microsoft.com/netfx/2009/xaml/activities" xmlns:a="clr-namespace:ACME_System1_Activities;assembly=ACME.System1.Activities" xmlns:a1="clr-namespace:ACME_System3_Activities;assembly=ACME.System3.Activities" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:sap="http://schemas.microsoft.com/netfx/2009/xaml/activities/presentation" xmlns:sap2010="http://schemas.microsoft.com/netfx/2010/xaml/activities/presentation" xmlns:scg="clr-namespace:System.Collections.Generic;assembly=System.Private.CoreLib" xmlns:sd="clr-namespace:System.Data;assembly=System.Data.Common" xmlns:ui="http://schemas.uipath.com/workflow/activities" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+  <x:Members>
+    <x:Property sap2010:Annotation.AnnotationText="Transaction item to be processed." Name="in_TransactionItem" Type="InArgument(ui:QueueItem)" />
+    <x:Property sap2010:Annotation.AnnotationText="Dictionary structure to store configuration data of the process (settings, constants and assets)." Name="in_Config" Type="InArgument(scg:Dictionary(x:String, x:Object))" />
+  </x:Members>
+  <VisualBasic.Settings>
+    <x:Null />
+  </VisualBasic.Settings>
+  <sap:VirtualizedContainerService.HintSize>730.4,1952</sap:VirtualizedContainerService.HintSize>
+  <sap2010:WorkflowViewState.IdRef>ProcessTransaction_1</sap2010:WorkflowViewState.IdRef>
+  <TextExpression.NamespacesForImplementation>
+    <scg:List x:TypeArguments="x:String" Capacity="50">
+      <x:String>Microsoft.VisualBasic</x:String>
+      <x:String>Microsoft.VisualBasic.Activities</x:String>
+      <x:String>System</x:String>
+      <x:String>System.Activities</x:String>
+      <x:String>System.Activities.Expressions</x:String>
+      <x:String>System.Activities.Statements</x:String>
+      <x:String>System.Activities.Validation</x:String>
+      <x:String>System.Activities.XamlIntegration</x:String>
+      <x:String>System.Collections</x:String>
+      <x:String>System.Collections.Generic</x:String>
+      <x:String>System.Collections.ObjectModel</x:String>
+      <x:String>System.Data</x:String>
+      <x:String>System.Diagnostics</x:String>
+      <x:String>System.Drawing</x:String>
+      <x:String>System.IO</x:String>
+      <x:String>System.Linq</x:String>
+      <x:String>System.Net.Mail</x:String>
+      <x:String>System.Runtime.InteropServices</x:String>
+      <x:String>System.Runtime.Serialization</x:String>
+      <x:String>System.Windows.Forms</x:String>
+      <x:String>System.Windows.Markup</x:String>
+      <x:String>System.Xml</x:String>
+      <x:String>System.Xml.Linq</x:String>
+      <x:String>UiPath.Core</x:String>
+      <x:String>UiPath.Core.Activities</x:String>
+      <x:String>GlobalVariablesNamespace</x:String>
+      <x:String>GlobalConstantsNamespace</x:String>
+      <x:String>ACMESystem1</x:String>
+      <x:String>System.Activities.Runtime.Collections</x:String>
+      <x:String>System.Reflection</x:String>
+      <x:String>UiPath.Platform.SyncObjects</x:String>
+      <x:String>UiPath.UIAutomationCore.Contracts</x:String>
+      <x:String>System.Linq.Expressions</x:String>
+      <x:String>System.Text.RegularExpressions</x:String>
+      <x:String>System.Numerics</x:String>
+      <x:String>ACMESystem3</x:String>
+      <x:String>UiPath.UIAutomationNext.Enums</x:String>
+      <x:String>System.ComponentModel</x:String>
+      <x:String>System.Xml.Serialization</x:String>
+      <x:String>UiPath.Platform.ObjectLibrary</x:String>
+      <x:String>UiPath.Shared.Activities</x:String>
+      <x:String>UiPath.UIAutomationNext.Activities</x:String>
+      <x:String>UiPath.UIAutomationNext.Activities.Services.RuntimeAnalyze</x:String>
+      <x:String>UiPath.UIAutomationNext.Models</x:String>
+      <x:String>UiPath.UIAutomationNext.Models.ExtractData</x:String>
+      <x:String>ACME_System1_Activities</x:String>
+      <x:String>ACME_System3_Activities</x:String>
+    </scg:List>
+  </TextExpression.NamespacesForImplementation>
+  <TextExpression.ReferencesForImplementation>
+    <scg:List x:TypeArguments="AssemblyReference" Capacity="80">
+      <AssemblyReference>Microsoft.Bcl.AsyncInterfaces</AssemblyReference>
+      <AssemblyReference>Microsoft.VisualBasic</AssemblyReference>
+      <AssemblyReference>PresentationCore</AssemblyReference>
+      <AssemblyReference>PresentationFramework</AssemblyReference>
+      <AssemblyReference>System</AssemblyReference>
+      <AssemblyReference>System.Activities</AssemblyReference>
+      <AssemblyReference>System.Collections</AssemblyReference>
+      <AssemblyReference>System.ComponentModel</AssemblyReference>
+      <AssemblyReference>System.ComponentModel.Composition</AssemblyReference>
+      <AssemblyReference>System.ComponentModel.TypeConverter</AssemblyReference>
+      <AssemblyReference>System.Configuration.ConfigurationManager</AssemblyReference>
+      <AssemblyReference>System.Console</AssemblyReference>
+      <AssemblyReference>System.Core</AssemblyReference>
+      <AssemblyReference>System.Data</AssemblyReference>
+      <AssemblyReference>System.Data.Common</AssemblyReference>
+      <AssemblyReference>System.Drawing</AssemblyReference>
+      <AssemblyReference>System.Drawing.Common</AssemblyReference>
+      <AssemblyReference>System.Drawing.Primitives</AssemblyReference>
+      <AssemblyReference>System.Linq</AssemblyReference>
+      <AssemblyReference>System.Memory</AssemblyReference>
+      <AssemblyReference>System.ObjectModel</AssemblyReference>
+      <AssemblyReference>System.Private.CoreLib</AssemblyReference>
+      <AssemblyReference>System.Private.Uri</AssemblyReference>
+      <AssemblyReference>System.Runtime.Serialization</AssemblyReference>
+      <AssemblyReference>System.Security.Permissions</AssemblyReference>
+      <AssemblyReference>System.ServiceModel</AssemblyReference>
+      <AssemblyReference>System.ValueTuple</AssemblyReference>
+      <AssemblyReference>System.Windows.Forms</AssemblyReference>
+      <AssemblyReference>System.Xaml</AssemblyReference>
+      <AssemblyReference>System.Xml</AssemblyReference>
+      <AssemblyReference>System.Xml.Linq</AssemblyReference>
+      <AssemblyReference>UiPath.Excel</AssemblyReference>
+      <AssemblyReference>UiPath.OCR.Activities.Design</AssemblyReference>
+      <AssemblyReference>UiPath.System.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.System.Activities.Design</AssemblyReference>
+      <AssemblyReference>UiPath.UiAutomation.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.UIAutomationCore</AssemblyReference>
+      <AssemblyReference>UiPath.Workflow</AssemblyReference>
+      <AssemblyReference>WindowsBase</AssemblyReference>
+      <AssemblyReference>UiPath.Studio.Constants</AssemblyReference>
+      <AssemblyReference>ACMESystem1</AssemblyReference>
+      <AssemblyReference>System.Reflection.DispatchProxy</AssemblyReference>
+      <AssemblyReference>System.Reflection.TypeExtensions</AssemblyReference>
+      <AssemblyReference>System.Reflection.Metadata</AssemblyReference>
+      <AssemblyReference>UiPath.Platform</AssemblyReference>
+      <AssemblyReference>System.Linq.Expressions</AssemblyReference>
+      <AssemblyReference>System.Text.RegularExpressions</AssemblyReference>
+      <AssemblyReference>System.Runtime.Numerics</AssemblyReference>
+      <AssemblyReference>ACMESystem3</AssemblyReference>
+      <AssemblyReference>UiPath.UIAutomationNext</AssemblyReference>
+      <AssemblyReference>System.ComponentModel.EventBasedAsync</AssemblyReference>
+      <AssemblyReference>System.ComponentModel.Primitives</AssemblyReference>
+      <AssemblyReference>System.Private.Xml</AssemblyReference>
+      <AssemblyReference>UiPath.OCR.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.Excel.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.Testing.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.UIAutomationNext.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.Excel.Activities.Design</AssemblyReference>
+      <AssemblyReference>System.Private.ServiceModel</AssemblyReference>
+      <AssemblyReference>System.Private.DataContractSerialization</AssemblyReference>
+      <AssemblyReference>System.Runtime.Serialization.Formatters</AssemblyReference>
+      <AssemblyReference>System.Runtime.Serialization.Primitives</AssemblyReference>
+      <AssemblyReference>System.Collections.NonGeneric</AssemblyReference>
+      <AssemblyReference>System.Memory.Data</AssemblyReference>
+      <AssemblyReference>System.Linq.Async</AssemblyReference>
+      <AssemblyReference>ACME.System1.Activities</AssemblyReference>
+      <AssemblyReference>ACME.System3.Activities</AssemblyReference>
+      <AssemblyReference>System.Data.SqlClient</AssemblyReference>
+    </scg:List>
+  </TextExpression.ReferencesForImplementation>
+  <Sequence sap2010:Annotation.AnnotationText="Invoke major steps of the business process, which are usually implemented by multiple subworkflows.&#xA;&#xA;If a BusinessRuleException is thrown, the transaction is skipped. &#xA;If another kind of exception occurs, the current transaction can be retried. " DisplayName="Process" sap:VirtualizedContainerService.HintSize="496,1887.2" sap2010:WorkflowViewState.IdRef="Sequence_1">
+    <Sequence.Variables>
+      <Variable x:TypeArguments="x:String" Name="ClientID" />
+      <Variable x:TypeArguments="x:String" Name="AccountAmount" />
+      <Variable x:TypeArguments="x:String" Name="AccountNumber" />
+      <Variable x:TypeArguments="sd:DataTable" Name="dt_Transactions" />
+      <Variable x:TypeArguments="x:Double" Name="SumAmount" />
+    </Sequence.Variables>
+    <sap:WorkflowViewStateService.ViewState>
+      <scg:Dictionary x:TypeArguments="x:String, x:Object">
+        <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+        <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
+      </scg:Dictionary>
+    </sap:WorkflowViewStateService.ViewState>
+    <ui:LogMessage DisplayName="Log Message Process Start" sap:VirtualizedContainerService.HintSize="433.6,174.4" sap2010:WorkflowViewState.IdRef="LogMessage_1" Level="Info" Message="[&quot;Started Process&quot;]" />
+    <ui:Comment DisplayName="Comment (placeholder)" sap:VirtualizedContainerService.HintSize="433.6,88" sap2010:WorkflowViewState.IdRef="Comment_1" Text="//  Invoke steps of the process" />
+    <a:ACME_System1_Navigate_To_Work_Item_Details DisplayName="ACME System1 - Navigate To Work Item Details" sap:VirtualizedContainerService.HintSize="433.6,174.4" sap2010:WorkflowViewState.IdRef="ACME_System1_Navigate_To_Work_Item_Details_2" in_intPostTimeout="[CInt(in_Config(&quot;ACMESystem1_PostCondition_Timeout&quot;))]" in_intPreTimeout="[CInt(in_Config(&quot;ACMESystem1_PreCondition_Timeout&quot;))]" in_intRetryNumber="[CInt(in_Config(&quot;ACMESystem1_Retry_NumberOfRetry&quot;))]" in_strURL="[in_TransactionItem.SpecificContent(&quot;URL&quot;).ToString]" in_strWIID="{x:Null}" in_tsRetryInterval="[TimeSpan.Parse(in_Config(&quot;ACMESystem1_Retry_RetryInterval&quot;).ToString)]" />
+    <a:ACME_System1_Extract_WI1_Account_Information_Details DisplayName="ACME System1 - Extract WI1 Account Information Details" sap:VirtualizedContainerService.HintSize="433.6,278.4" sap2010:WorkflowViewState.IdRef="ACME_System1_Extract_WI1_Account_Information_Details_2" in_intPreTimeout="[CInt(in_Config(&quot;ACMESystem1_PreCondition_Timeout&quot;))]" in_intRetryNumber="[CInt(in_Config(&quot;ACMESystem1_Retry_NumberOfRetry&quot;))]" in_tsRetryInterval="[TimeSpan.Parse(in_Config(&quot;ACMESystem1_Retry_RetryInterval&quot;).ToString)]" out_strAccountAmount="[AccountAmount]" out_strAccountNumber="[AccountNumber]" out_strClientId="[ClientID]" out_strCurrency="{x:Null}" />
+    <a1:ACME_System3_Search_For_Client_By_ID DisplayName="ACME System3 - Search For Client By ID" sap:VirtualizedContainerService.HintSize="433.6,174.4" sap2010:WorkflowViewState.IdRef="ACME_System3_Search_For_Client_By_ID_2" in_boolIncludeInactiveClients="True" in_intPostTimeout="[CInt(in_Config(&quot;ACMESystem3_PostCondition_Timeout&quot;))]" in_intPreTimeout="[CInt(in_Config(&quot;ACMESystem3_PreCondition_Timeout&quot;))]" in_intRetryNumber="[CInt(in_Config(&quot;ACMESystem3_Retry_NumberOfRetry&quot;))]" in_strClientId="[ClientID]" in_tsRetryInterval="[TimeSpan.Parse(in_Config(&quot;ACMESystem3_Retry_RetryInterval&quot;).ToString)]" />
+    <a1:ACME_System3_Open_Client_Details DisplayName="ACME System3 - Open Client Details" sap:VirtualizedContainerService.HintSize="433.6,122.4" sap2010:WorkflowViewState.IdRef="ACME_System3_Open_Client_Details_2" in_intClientIdTimeout="[CInt(in_Config(&quot;ACMESystem3_PreCondition_Timeout&quot;))]" in_intPostTimeout="[CInt(in_Config(&quot;ACMESystem3_PostCondition_Timeout&quot;))]" in_intRetryNumber="[CInt(in_Config(&quot;ACMESystem3_Retry_NumberOfRetry&quot;))]" in_intSearchWindowTimeout="[CInt(in_Config(&quot;ACMESystem3_PreCondition_Timeout&quot;))]" in_strClientId="[ClientID]" in_tsRetryInterval="[TimeSpan.Parse(in_Config(&quot;ACMESystem3_Retry_RetryInterval&quot;).ToString)]" />
+    <a1:ACME_System3_Open_Client_Accounts DisplayName="ACME System3 - Open Client Accounts" sap:VirtualizedContainerService.HintSize="433.6,56.8" sap2010:WorkflowViewState.IdRef="ACME_System3_Open_Client_Accounts_2" in_intPostTimeout="[CInt(in_Config(&quot;ACMESystem3_PostCondition_Timeout&quot;))]" in_intPreTimeout="[CInt(in_Config(&quot;ACMESystem3_PreCondition_Timeout&quot;))]" in_intRetryNumber="[CInt(in_Config(&quot;ACMESystem3_Retry_NumberOfRetry&quot;))]" in_tsRetryInterval="[TimeSpan.Parse(in_Config(&quot;ACMESystem3_Retry_RetryInterval&quot;).ToString)]" />
+    <a1:ACME_System3_Open_Account_Movements DisplayName="ACME System3 - Open Account Movements" sap:VirtualizedContainerService.HintSize="433.6,122.4" sap2010:WorkflowViewState.IdRef="ACME_System3_Open_Account_Movements_2" in_intAccountNumberTimeout="[CInt(in_Config(&quot;ACMESystem3_PreCondition_Timeout&quot;))]" in_intClientAccountsWindowTimeout="[CInt(in_Config(&quot;ACMESystem3_PreCondition_Timeout&quot;))]" in_intPostTimeout="[CInt(in_Config(&quot;ACMESystem3_PostCondition_Timeout&quot;))]" in_intRetryNumber="[CInt(in_Config(&quot;ACMESystem3_Retry_NumberOfRetry&quot;))]" in_strAccountNumber="[AccountNumber]" in_tsRetryInterval="[TimeSpan.Parse(in_Config(&quot;ACMESystem3_Retry_RetryInterval&quot;).ToString)]" />
+    <a1:ACME_System3_Show_All_Transactions out_boolTransactionsListEmpty="{x:Null}" DisplayName="ACME System3 - Show All Transactions" sap:VirtualizedContainerService.HintSize="433.6,56.8" sap2010:WorkflowViewState.IdRef="ACME_System3_Show_All_Transactions_2" in_intPreTimeout="[CInt(in_Config(&quot;ACMESystem3_PreCondition_Timeout&quot;))]" in_intRetryNumber="[CInt(in_Config(&quot;ACMESystem3_Retry_NumberOfRetry&quot;))]" in_tsRetryInterval="[TimeSpan.Parse(in_Config(&quot;ACMESystem3_Retry_RetryInterval&quot;).ToString)]" />
+    <a1:ACME_System3_Extract_Transactions DisplayName="ACME System3 - Extract Transactions" sap:VirtualizedContainerService.HintSize="433.6,122.4" sap2010:WorkflowViewState.IdRef="ACME_System3_Extract_Transactions_2" in_intPreTimeout="[CInt(in_Config(&quot;ACMESystem3_PreCondition_Timeout&quot;))]" in_intRetryNumber="[CInt(in_Config(&quot;ACMESystem3_Retry_NumberOfRetry&quot;))]" in_tsRetryInterval="[TimeSpan.Parse(in_Config(&quot;ACMESystem3_Retry_RetryInterval&quot;).ToString)]" out_tdTransactions="[dt_Transactions]" />
+    <a:ACME_System1_Open_Update_Work_Item_Page DisplayName="ACME System1 - Open Update Work Item Page" sap:VirtualizedContainerService.HintSize="433.6,56.8" sap2010:WorkflowViewState.IdRef="ACME_System1_Open_Update_Work_Item_Page_2" in_intPostTimeout="[CInt(in_Config(&quot;ACMESystem1_PostCondition_Timeout&quot;))]" in_intPreTimeout="[CInt(in_Config(&quot;ACMESystem1_PreCondition_Timeout&quot;))]" in_intRetryNumber="[CInt(in_Config(&quot;ACMESystem1_Retry_NumberOfRetry&quot;))]" in_tsRetryInterval="[TimeSpan.Parse(in_Config(&quot;ACMESystem1_Retry_RetryInterval&quot;).ToString)]" />
+    <Assign sap:VirtualizedContainerService.HintSize="433.6,113.6" sap2010:WorkflowViewState.IdRef="Assign_1">
+      <Assign.To>
+        <OutArgument x:TypeArguments="x:Double">[SumAmount]</OutArgument>
+      </Assign.To>
+      <Assign.Value>
+        <InArgument x:TypeArguments="x:Double">[dt_Transactions.AsEnumerable().Sum(Function(row) CDbl(row("Amount")))]</InArgument>
+      </Assign.Value>
+      <sap:WorkflowViewStateService.ViewState>
+        <scg:Dictionary x:TypeArguments="x:String, x:Object">
+          <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+          <x:Boolean x:Key="IsPinned">False</x:Boolean>
+        </scg:Dictionary>
+      </sap:WorkflowViewStateService.ViewState>
+    </Assign>
+    <a:ACME_System1_Update_Work_Item DisplayName="ACME System1 - Update Work Item" sap:VirtualizedContainerService.HintSize="433.6,165.6" sap2010:WorkflowViewState.IdRef="ACME_System1_Update_Work_Item_2" in_intPostTimeout="[CInt(in_Config(&quot;ACMESystem1_PostCondition_Timeout&quot;))]" in_intPreTimeout="[CInt(in_Config(&quot;ACMESystem1_PreCondition_Timeout&quot;))]" in_intRetryNumber="[CInt(in_Config(&quot;ACMESystem1_Retry_NumberOfRetry&quot;))]" in_strComment="[If(SumAmount = CDbl(AccountAmount), &quot;Account value matches&quot;, &quot;Account has difference of &quot; + (CDbl(AccountAmount) - SumAmount).ToString)]" in_strStatus="Completed" in_tsRetryInterval="[TimeSpan.Parse(in_Config(&quot;ACMESystem1_Retry_RetryInterval&quot;).ToString)]" />
+  </Sequence>
+</Activity>

@@ -1,0 +1,21 @@
+{
+  "Tags": [
+    {
+      "Key": "ACME System 1"
+    },
+    {
+      "Key": "ACME System 3"
+    },
+    {
+      "Key": "ACME"
+    },
+    {
+      "Key": "Work Item 1"
+    },
+    {
+      "Key": "Verify Account Positions"
+    }
+  ],
+  "SeparateRuntimeDependencies": true,
+  "IncludeSources": true
+}
